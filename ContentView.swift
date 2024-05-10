@@ -1,8 +1,8 @@
 //
 //  ContentView.swift
-//  MedAuth
+//  medical
 //
-//  Created by Elias Farzad  on 5/9/24.
+//  Created by Renay  on 4/25/24.
 //
 
 import SwiftUI
