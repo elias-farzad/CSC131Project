@@ -237,28 +237,26 @@ struct HealthCategoriesView: View {
     let patientId: String
     
     var body: some View {
-        NavigationView {
-            List {
-                Section(header: Text("Health Categories")) {
-                    NavigationLink(destination: MedicalRecordsView(patientId: patientId)) {
-                        HStack {
-                            Image(systemName: "heart.fill")
-                                .foregroundColor(.red)
-                            Text("Health")
-                        }
+        List {
+            Section(header: Text("Health Categories")) {
+                NavigationLink(destination: MedicalRecordsView(patientId: patientId)) {
+                    HStack {
+                        Image(systemName: "heart.fill")
+                            .foregroundColor(.red)
+                        Text("Health")
                     }
-                    NavigationLink(destination: PrescriptionsView(patientId: patientId)) {
-                        HStack {
-                            Image(systemName: "pills.fill")
-                                .foregroundColor(.blue)
-                            Text("Medication")
-                        }
+                }
+                NavigationLink(destination: PrescriptionsView(patientId: patientId)) {
+                    HStack {
+                        Image(systemName: "pills.fill")
+                            .foregroundColor(.blue)
+                        Text("Medication")
                     }
                 }
             }
-            .listStyle(GroupedListStyle())
-            .navigationBarTitle("Health Categories")
         }
+        .listStyle(GroupedListStyle())
+        .navigationBarTitle("Health Categories")
     }
 }
 
