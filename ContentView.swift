@@ -9,6 +9,10 @@
 
 import SwiftUI
 import CoreData
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseStorage
+
 
 struct User {
     var username: String
@@ -229,15 +233,17 @@ struct DashboardView: View {
                     Label("Calendar", systemImage: "calendar")
                 }
             
-            ContactUsView()
+            UserSettingsView()
                 .tabItem {
-                    Label("Contact Us", systemImage: "phone.circle")
+                    Label("User Settings", systemImage: "gear")
                 }
             
             PatientInfoView(patientInfo: viewModel.patientInfo)
                 .tabItem {
                     Label("Patient Info", systemImage: "person.fill")
                 }
+            
+            //Insert code for setting
         }
     }
     
@@ -298,11 +304,11 @@ struct ContentView: View {
         DashboardView(viewModel: viewModel)
     }
 }
-
-struct ContactUsView: View {
+    //Contact info for Clinic
+struct UserSettingsView: View {
     var body: some View {
         List {
-            Section(header: Text("Contact Information")) {
+            Section(header: Text("Profile Settings")) {
                 HStack {
                     Image(systemName: "phone.fill")
                         .foregroundColor(.green)
@@ -331,6 +337,7 @@ struct PatientInfo: Identifiable {
     var value: String
 }
 
+    //
 struct PatientInfoView: View {
     var patientInfo: [PatientInfo]
 
@@ -346,6 +353,3 @@ struct PatientInfoView: View {
         .navigationTitle("Patient Info")
     }
 }
-
-
-
