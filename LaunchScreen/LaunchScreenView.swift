@@ -16,7 +16,7 @@ struct LaunchScreenView: View {
 
         //screen after launch screen is over
         if isActive {
-            ContentView() //replace with dashboard file I think cuz I just used this as a placeholder to see what happens after the launch screen is over
+            ContentView() //replace with login file I think cuz I just used this as a placeholder to see what happens after the launch screen is over
         } else {
             VStack {
                 VStack {
