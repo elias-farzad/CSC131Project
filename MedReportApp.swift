@@ -1,3 +1,4 @@
+
 //
 //  MedicalApp.swift
 //  MedicalRecords
@@ -61,15 +62,16 @@ struct MedicalApp: App {
     }
 }
 
-
 struct HomeView: View {
     @State private var showAddPatient = false
-    @State private var patientId = ""
-
+    @State private var navigateToPatients = false
+    
     var body: some View {
         List {
             Section(header: Text("Patient Management")) {
-                NavigationLink(destination: PatientsView()) {
+                Button(action: {
+                    navigateToPatients = true
+                }) {
                     HStack {
                         Image(systemName: "person.3")
                             .foregroundColor(.blue)
@@ -88,21 +90,15 @@ struct HomeView: View {
             }
         }
         .listStyle(GroupedListStyle())
-        
         .sheet(isPresented: $showAddPatient) {
             AddPatientView()
         }
         .background(
-            NavigationLink(destination: HealthCategoriesView(patientId: patientId),
-                           isActive: .constant(patientId != "")) {
+            NavigationLink(destination: PatientsView(),
+                           isActive: $navigateToPatients) {
                 EmptyView()
             }
         )
-        .onReceive(NotificationCenter.default.publisher(for: .newPatientAdded)) { notification in
-            if let patientId = notification.object as? String {
-                self.patientId = patientId
-            }
-        }
     }
 }
 
@@ -682,4 +678,3 @@ struct PatientsView: View {
         return dateFormatter.string(from: date)
     }
 }
-
